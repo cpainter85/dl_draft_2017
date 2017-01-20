@@ -39,6 +39,7 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     arel (7.1.4)
+    bcrypt (3.1.10)
     builder (3.2.3)
     coderay (1.1.1)
     coffee-rails (4.2.1)
@@ -58,6 +59,8 @@ GEM
     factory_girl_rails (4.8.0)
       factory_girl (~> 4.8.0)
       railties (>= 3.0.0)
+    faker (1.7.2)
+      i18n (~> 0.5)
     ffi (1.9.17)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
@@ -182,8 +185,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bcrypt (~> 3.1.7)
   coffee-rails (~> 4.2)
   factory_girl_rails (~> 4.8)
+  faker (~> 1.7, >= 1.7.2)
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)
