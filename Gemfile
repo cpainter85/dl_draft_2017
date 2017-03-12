@@ -35,11 +35,15 @@ gem 'bcrypt', '~> 3.1.7'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
+
 group :development, :test do
   gem 'pry', '~> 0.10.4'
   gem 'rspec-rails', '~> 3.4'
   gem 'factory_girl_rails', '~> 4.8'
   gem 'faker', '~> 1.7', '>= 1.7.2'
+  gem 'capybara', '~> 2.12', '>= 2.12.1'
+  gem 'rails-controller-testing', '~> 1.0', '>= 1.0.1'
 end
 
 group :development do
