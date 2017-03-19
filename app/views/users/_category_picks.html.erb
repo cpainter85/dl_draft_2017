@@ -1,0 +1,23 @@
+<h3 class="text-center"><%= category.name%></h3>
+<h5 class="text-center"><%= "Minimum: #{category.minimum} | Maximum: #{category.maximum}" %></h5>
+<table class="table table-striped team-table">
+  <colgroup>
+    <col class="col-md-8"/>
+    <col class="col-md-4"/>
+  </colgroup>
+  <thead>
+    <tr>
+      <th>Draft Pick</th>
+      <th>Round Drafted</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% user.draft_picks.where(category_id: category.id).order(:round_drafted, :created_at).each do |pick| %>
+      <tr>
+        <td><%= pick.name %></td>
+        <td><%= pick.round_drafted%></td>
+      </tr>
+    <% end %>
+  </tbody>
+
+</table>

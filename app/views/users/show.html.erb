@@ -1,0 +1,8 @@
+<div class="container">
+  <div class="page-header">
+    <h1><%= "#{@user.first_name} - #{@user.team_name} (#{@user.team_abbr})" %></h1>
+  </div>
+  <% @categories.each do |category| %>
+    <%= render partial: 'category_picks', locals: {user: @user, category: category} %>
+  <% end %>
+</div>
