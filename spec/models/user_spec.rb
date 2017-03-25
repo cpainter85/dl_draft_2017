@@ -39,6 +39,18 @@ describe User do
     end
   end
 
+  describe '#first_pick_of_round' do
+    it "returns the user's first pick of the round"
+  end
+
+  describe '#full_name' do
+    let(:user) { build(:user, first_name: "Joe", last_name: "Somebody") }
+
+    it "returns a string with the user's full name (first and last name)" do
+      expect(user.full_name).to eq "Joe Somebody"
+    end
+  end
+
   describe '#is_finalist?' do
     context "user has a finals_order greater than 0" do
       let(:user) { build(:user, finals_order: 2) }
@@ -75,12 +87,12 @@ describe User do
     end
   end
 
-  describe '#full_name' do
-    let(:user) { build(:user, first_name: "Joe", last_name: "Somebody") }
+  describe '#ordered_picks' do
+    it "returns the user's draft picks for the round in order they were drafted"
+  end
 
-    it "returns a string with the user's full name (first and last name)" do
-      expect(user.full_name).to eq "Joe Somebody"
-    end
+  describe '#second_pick_of_round' do
+    it "returns the user's second pick for the round"
   end
 
   describe '#team_abbr' do

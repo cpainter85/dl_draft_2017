@@ -12,6 +12,10 @@ class User < ApplicationRecord
   scope :finalists, -> { where('finals_order > ?', 0).order(:finals_order) }
   scope :semifinalists, -> { where('semifinals_order > ?', 0).order(:semifinals_order) }
 
+  def first_pick_of_round(round_num)
+    self.ordered_picks(round_num).first
+  end
+
   def full_name
     "#{first_name} #{last_name}"
   end
@@ -22,6 +26,14 @@ class User < ApplicationRecord
 
   def is_semifinalist?
     semifinals_order > 0
+  end
+
+  def ordered_picks(round_num)
+    self.draft_picks.where(round_drafted: round_num).order(:created_at)
+  end
+
+  def second_pick_of_round(round_num)
+    self.ordered_picks(round_num)[1]
   end
 
   def team_abbr
