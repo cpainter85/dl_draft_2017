@@ -2,4 +2,38 @@
   <div class="page-header">
     <h1>Draft Selection Schedule</h1>
   </div>
+
+  <% @schedule.each_pair do |round, draft_order| %>
+    <h2><%= "Round #{round}" %></h2>
+
+    <table class="table table-striped draft-table">
+      <thead>
+        <tr>
+          <th>Team</th>
+          <th>Draft Pick</th>
+          <th>Category</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% (1..2).each do |n| %>
+          <% user_order = n == 1 ? draft_order.first : draft_order.last %>
+          <% user_order.each do |user| %>
+            <tr>
+              <td><%= link_to user.team_abbr_and_name, user_path(user) %></td>
+              <% pick = n == 1 ? user.first_pick_of_round(round) : user.second_pick_of_round(round) %>
+              <td><%= pick.try(:name).to_s %></td>
+              <td><%= pick.try(:category).try(:name).to_s %></td>
+            </tr>
+          <% end %>
+          <% if n == 1 %>
+            <tr>
+              <% 3.times do %>
+                <td></td>
+              <% end %>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
 </div>

@@ -8,7 +8,7 @@ class DraftController < ApplicationController
   def draft_schedule
     schedule = {}
     users = User.all.order(:start_order).pluck(:id)
-    (1..8).each do |num|
+    Round.regular_play_rounds.each do |num|
       schedule[num] = [users.dup, users.dup.reverse]
       users.push(users.shift)
     end
