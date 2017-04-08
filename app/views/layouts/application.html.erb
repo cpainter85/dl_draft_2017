@@ -9,6 +9,9 @@
   </head>
 
   <body>
+    <% if !@disable_nav %>
+      <%= render 'layouts/nav' %>
+    <% end %>
     <div class="container">
       <% if flash[:notice] %>
         <div class="alert alert-success">

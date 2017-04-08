@@ -87,6 +87,14 @@ describe User do
     end
   end
 
+  describe '#opposing_teams' do
+    it "returns all of a user's opposing teams" do
+      user = create(:user)
+      opposing_users = create_list(:user, 4)
+      expect(user.opposing_teams).to eq opposing_users
+    end
+  end
+
   describe '#ordered_picks' do
     it "returns the user's draft picks for the round in order they were drafted"
   end

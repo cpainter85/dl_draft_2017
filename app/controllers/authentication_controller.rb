@@ -1,5 +1,6 @@
 class AuthenticationController < ApplicationController
   skip_before_action :ensure_current_user
+  before_action :disable_nav
 
   def new
 

@@ -9,6 +9,10 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
+  def disable_nav
+    @disable_nav = true
+  end
+
   def ensure_current_user
     if !current_user
       flash[:alert] = "You must sign in"
