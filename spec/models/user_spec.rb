@@ -39,6 +39,10 @@ describe User do
     end
   end
 
+  describe '#default_round' do
+    it "returns the suggested round for that user's next draft pick"
+  end
+
   describe '#first_pick_of_round' do
     it "returns the user's first pick of the round"
   end

@@ -12,6 +12,9 @@ class User < ApplicationRecord
   scope :finalists, -> { where('finals_order > ?', 0).order(:finals_order) }
   scope :semifinalists, -> { where('semifinals_order > ?', 0).order(:semifinals_order) }
 
+  def default_round
+    self.draft_picks.empty? ? 1 : (self.draft_picks.size/2)+1
+  end
 
   def first_pick_of_round(round_num)
     self.ordered_picks(round_num).first

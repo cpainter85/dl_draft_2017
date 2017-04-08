@@ -16,6 +16,10 @@
       <tr>
         <td><%= pick.name %></td>
         <td><%= pick.round_drafted%></td>
+        <% if user == @current_user %>
+          <td><%= link_to "Edit", edit_user_draft_pick_path(user, pick), class: "btn btn-primary btn-sm" %></td>
+          <td><%= link_to "Delete", user_draft_pick_path(user, pick), method: :delete, data: {confirm: "Are you sure?" }, class: "btn btn-warning btn-sm" %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

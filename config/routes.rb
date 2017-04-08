@@ -7,5 +7,7 @@ Rails.application.routes.draw do
   post 'sign-in', to: 'authentication#create'
   get 'sign-out', to: 'authentication#destroy'
 
-  resources :users, only: [:show]
+  resources :users, only: [:show] do
+    resources :draft_picks, expect: [:index]
+  end
 end
