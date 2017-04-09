@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="page-header">
+    <% if regular_play_rounds.include?(@round) %>
+      <h1><%= "Round #{@round} Matches" %></h1>
+    <% elsif semi_final_rounds.include?(@round) %>
+      <h1><%= "Semi-Final Matches (Round #{@round})" %></h1>
+    <% else %>
+      <h1><%= "Final Match (Round #{@round})" %></h1>
+    <% end %>
+  </div>
+
+  <% @matches.each do |match| %>
+    <div class="team_match col-md-6">
+      <table class="table table_match">
+        <tr>
+          <th colspan=2><%= match.team1.team_abbr_and_name %></th>
+        </tr>
+        <%= render partial: "team_match", locals: {team: match.team1} %>
+      </table>
+    </div>
+    <div class="team_match col-md-6">
+      <table class="table table_match">
+        <tr>
+          <th colspan=2><%= match.team2.team_abbr_and_name %></th>
+        </tr>
+        <%= render partial: "team_match", locals: {team: match.team2} %>
+      </table>
+    </div>
+  <% end %>
+</div>

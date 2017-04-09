@@ -10,4 +10,8 @@ Rails.application.routes.draw do
   resources :users, only: [:show] do
     resources :draft_picks, expect: [:index]
   end
+
+  resources :rounds, only: [] do
+    resources :matches, only: [:index]
+  end
 end

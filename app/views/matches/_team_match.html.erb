@@ -1,0 +1,10 @@
+<tr>
+  <% first_pick_of_round = team.first_pick_of_round(@round) %>
+  <td><%= first_pick_of_round.try(:name).to_s %></td>
+  <td><%= first_pick_of_round.try(:category).try(:name).to_s %></td>
+</tr>
+<tr>
+  <% second_pick_of_round = team.second_pick_of_round(@round) %>
+  <td><%= second_pick_of_round.try(:name).to_s %></td>
+  <td><%= second_pick_of_round.try(:category).try(:name).to_s %></td>
+</tr>
