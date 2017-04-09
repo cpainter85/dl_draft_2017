@@ -15,7 +15,7 @@
         <tr>
           <th colspan=2><%= match.team1.team_abbr_and_name %></th>
         </tr>
-        <%= render partial: "team_match", locals: {team: match.team1} %>
+        <%= render partial: "team_match", locals: {match: match, team: match.team1} %>
       </table>
     </div>
     <div class="team_match col-md-6">
@@ -23,7 +23,7 @@
         <tr>
           <th colspan=2><%= match.team2.team_abbr_and_name %></th>
         </tr>
-        <%= render partial: "team_match", locals: {team: match.team2} %>
+        <%= render partial: "team_match", locals: {match: match, team: match.team2} %>
       </table>
     </div>
   <% end %>

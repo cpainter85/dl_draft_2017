@@ -24,12 +24,20 @@ class User < ApplicationRecord
     "#{first_name} #{last_name}"
   end
 
+  def has_not_voted_on_match?(match)
+    self.votes.where(match_id: match).empty?
+  end
+
   def is_finalist?
     finals_order > 0
   end
 
   def is_semifinalist?
     semifinals_order > 0
+  end
+
+  def match_participant?(match)
+    [match.team1_id, match.team2_id].include?(self.id)
   end
 
   def opposing_teams

@@ -55,6 +55,26 @@ describe User do
     end
   end
 
+  describe '#has_not_voted_on_match?' do
+    let(:user) { create(:user) }
+    let(:match) { create(:match) }
+
+    context "user has not voted on match" do
+      it "returns true" do
+        expect(user.has_not_voted_on_match?(match)).to eq true
+      end
+    end
+
+    context "user has voted on match" do
+      before :each do
+        user.votes.create(match_id: match.id, vote_for_team_id: match.team1_id)
+      end
+      it "returns false" do
+        expect(user.has_not_voted_on_match?(match)).to eq false
+      end
+    end
+  end
+
   describe '#is_finalist?' do
     context "user has a finals_order greater than 0" do
       let(:user) { build(:user, finals_order: 2) }
@@ -87,6 +107,23 @@ describe User do
 
       it "returns false" do
         expect(user.is_semifinalist?).to eq false
+      end
+    end
+  end
+
+  describe '#match_participant?' do
+    let(:participant) { create(:user) }
+    let(:non_participant) { create(:user) }
+    let(:match) { build(:match, team1_id: participant.id) }
+
+    context "user is a participant in the match" do
+      it "returns true" do
+        expect(participant.match_participant?(match)).to eq true
+      end
+    end
+    context "user is not a participant in the match" do
+      it "returns false" do
+        expect(non_participant.match_participant?(match)).to eq false
       end
     end
   end

@@ -8,3 +8,10 @@
   <td><%= second_pick_of_round.try(:name).to_s %></td>
   <td><%= second_pick_of_round.try(:category).try(:name).to_s %></td>
 </tr>
+<% if current_user.has_not_voted_on_match?(match) && !current_user.match_participant?(match) %>
+<tr>
+  <td colspan=2>
+    <%= button_to "Vote for #{team.team_abbr}", user_votes_path(current_user, vote: {match_id: match.id, vote_for_team_id: team.id}), remote: true, class: "btn btn-danger vote_button_for_match_#{match.id}" %>
+  </td>
+</tr>
+<% end %>
