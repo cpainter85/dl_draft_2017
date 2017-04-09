@@ -8,9 +8,9 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Teams<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><%= link_to "My team", user_path(@current_user) %></li>
+            <li><%= link_to "My team", user_path(current_user) %></li>
             <li class="divider" role="separator"></li>
-            <% @current_user.opposing_teams.each do |team| %>
+            <% current_user.opposing_teams.each do |team| %>
               <li><%= link_to team.team_abbr_and_name, user_path(team) %></li>
             <% end %>
           </ul>
@@ -18,20 +18,20 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Draft Matches<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <% Round.regular_play_rounds.each do |round_num| %>
+            <% regular_play_rounds.each do |round_num| %>
               <!-- TODO: make link to matches -->
-              <li><%= link_to "Round #{round_num}", "#" %></li>
+              <li><%= link_to "Round #{round_num}", round_matches_path(round_num) %></li>
             <% end %>
           </ul>
         </li>
         <!-- TODO: add links to semi-finals and finals -->
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <% if @current_user %>
+        <% if current_user %>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= @current_user.full_name %><span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.full_name %><span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><%= link_to "My team", user_path(@current_user) %></li>
+              <li><%= link_to "My team", user_path(current_user) %></li>
             </ul>
           </li>
           <li><%= link_to "Sign Out", sign_out_path %></li>
