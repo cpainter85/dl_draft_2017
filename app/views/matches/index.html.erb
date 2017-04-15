@@ -11,7 +11,7 @@
 
   <% @matches.each do |match| %>
     <div class="team_match col-md-6">
-      <table class="table table_match">
+      <table class="table match_table">
         <tr>
           <th colspan=2><%= match.team1.team_abbr_and_name %></th>
         </tr>
@@ -19,7 +19,7 @@
       </table>
     </div>
     <div class="team_match col-md-6">
-      <table class="table table_match">
+      <table class="table match_table">
         <tr>
           <th colspan=2><%= match.team2.team_abbr_and_name %></th>
         </tr>
