@@ -1,1 +1,1 @@
-$(".vote_button_for_match_<%= @vote.match_id %>").remove();
+$(".vote_button_for_match_<%= @vote.match_id %>").closest('tr').remove();
