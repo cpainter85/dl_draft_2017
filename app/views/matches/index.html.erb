@@ -10,7 +10,7 @@
   </div>
 
   <% @matches.each do |match| %>
-    <div class="team_match col-md-6">
+    <div class="team_match col-xs-6">
       <table class="table match_table">
         <tr>
           <th colspan=2><%= match.team1.team_abbr_and_name %></th>
@@ -18,7 +18,7 @@
         <%= render partial: "team_match", locals: {match: match, team: match.team1} %>
       </table>
     </div>
-    <div class="team_match col-md-6">
+    <div class="team_match col-xs-6">
       <table class="table match_table">
         <tr>
           <th colspan=2><%= match.team2.team_abbr_and_name %></th>
