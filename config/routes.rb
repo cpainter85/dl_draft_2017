@@ -13,6 +13,6 @@ Rails.application.routes.draw do
   end
 
   resources :rounds, only: [] do
-    resources :matches, only: [:index]
+    resources :matches, only: [:index, :new, :create]
   end
 end

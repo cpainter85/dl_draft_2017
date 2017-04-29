@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="well">
+    <h1 class="text-center"><%= "New Match for Round #{@round}"%></h1>
+    <div class="form-inline">
+      <%= form_for @match, url: round_matches_path(@round) do |f| %>
+        <%= f.hidden_field :round_id, value: @round %>
+        <%= render partial: 'shared/errors', locals: {object: @match} %>
+        <div class="form-group">
+          <%= f.label :team1_id, "Team 1" %>
+          <%= f.collection_select(:team1_id, User.order(:first_name).all, :id, :team_abbr_and_name, {}, class: "form-control") %>
+        </div>
+        <div class="form-group">
+          <%= f.label :team2_id, "Team 2" %>
+          <%= f.collection_select(:team2_id, User.order(first_name: :desc).all, :id, :team_abbr_and_name, {}, class: "form-control") %>
+        </div>
+        <div class="form-group">
+          <%= f.submit "Create Match", class: "btn btn-default" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

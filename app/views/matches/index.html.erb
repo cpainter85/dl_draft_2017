@@ -1,5 +1,10 @@
 <div class="container">
   <div class="page-header">
+    <% if current_user.admin %>
+      <div class="pull-right">
+        <%= link_to "Make New Match", new_round_match_path(@round), class: "btn btn-danger btn-lg" %>
+      </div>
+    <% end %>
     <% if regular_play_rounds.include?(@round) %>
       <h1><%= "Round #{@round} Matches" %></h1>
     <% elsif semi_final_rounds.include?(@round) %>
