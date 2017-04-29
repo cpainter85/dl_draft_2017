@@ -1,6 +1,7 @@
+<% draft_pick ||= @draft_pick %>
 <div class="form-horizontal">
-  <%= form_for [current_user, @draft_pick] do |f| %>
-    <%= render partial: 'shared/errors', locals: {object: @draft_pick} %>
+  <%= form_for [current_user, draft_pick] do |f| %>
+    <%= render partial: 'shared/errors', locals: {object: draft_pick} %>
     <div class="form-group">
       <%= f.label :name, class: "col-sm-2 control-label" %>
       <div class="col-sm-10">
@@ -20,8 +21,8 @@
       </div>
     </div>
     <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10">
-        <%= f.submit @draft_pick.id ? "Update DraftPick" : "Make Draft", class: "btn btn-info btn-lg" %>
+      <div class="col-sm-offset-2 col-sm-4">
+        <%= f.submit draft_pick.id ? "Update Draft Pick" : "Make Draft Pick", class: "btn btn-success btn-lg" %>
       </div>
     </div>
   <% end %>
