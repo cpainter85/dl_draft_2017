@@ -1,7 +1,9 @@
 <div class="container">
   <div class="page-header">
     <div class="pull-right">
-      <%= link_to "Make Draft Pick", new_user_draft_pick_path(current_user), class: "btn btn-danger btn-lg" %>
+      <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#makeDraftPick">
+        Make Draft Pick
+      </button>
     </div>
     <h1>Draft Selection Schedule</h1>
   </div>
@@ -40,3 +42,6 @@
     </table>
   <% end %>
 </div>
+
+<!-- Modal -->
+<%= render 'draft_picks/new' %>

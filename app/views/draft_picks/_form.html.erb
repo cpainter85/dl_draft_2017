@@ -1,5 +1,5 @@
 <div class="form-horizontal">
-  <%= form_for [@user, @draft_pick] do |f| %>
+  <%= form_for [current_user, @draft_pick] do |f| %>
     <%= render partial: 'shared/errors', locals: {object: @draft_pick} %>
     <div class="form-group">
       <%= f.label :name, class: "col-sm-2 control-label" %>

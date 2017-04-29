@@ -1,6 +1,7 @@
 class DraftController < ApplicationController
   def index
     @schedule ||= draft_schedule
+    @draft_pick ||= current_user.draft_picks.new(round_drafted: current_user.default_round)
   end
 
   private
