@@ -2,6 +2,9 @@ require 'rails_helper'
 
 describe Vote do
   describe 'validations' do
+    it { should validate_presence_of(:user_id) }
+    it { should validate_presence_of(:match_id) }
+
     it { should validate_uniqueness_of(:user_id).scoped_to(:match_id) }
 
     describe '#user_cannot_be_match_participant' do
