@@ -31,6 +31,13 @@ describe Match do
     end
   end
 
+  describe '#eligible_voters' do
+    it "returns all users eligible to vote on a match" do
+      eligible_voters = create_list(:user, 3)
+      expect(match.eligible_voters).to eq eligible_voters
+    end
+  end
+
   describe '#team1' do
     it "returns the team with the corresponding team1_id" do
       expect(match.team1).to eq user1

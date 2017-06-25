@@ -7,6 +7,10 @@ class Match < ApplicationRecord
       .none? { |user| user.has_not_voted_on_match?(self) }
   end
 
+  def eligible_voters
+    User.all.reject { |user| user.match_participant?(self) }
+  end
+
   def team1
     User.includes(:draft_picks).find(team1_id)
   end
