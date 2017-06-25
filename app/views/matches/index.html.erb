@@ -32,4 +32,25 @@
       </table>
     </div>
   <% end %>
+
+  <% if current_user.admin %>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Match</th>
+          <th>Has not voted</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @matches.each do |match| %>
+          <tr>
+            <td><%= "#{match.team1.team_abbr_and_name} vs #{match.team2.team_abbr_and_name}" %></td>
+            <td><%= match.eligible_voters.select {|user| user.has_not_voted_on_match?(match) }.map(&:first_name).to_sentence %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+
+
 </div>
