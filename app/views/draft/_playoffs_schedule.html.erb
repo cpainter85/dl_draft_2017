@@ -1,0 +1,29 @@
+<h3><%= "Round #{round}" %></h3>
+<table class="table table-striped draft-table">
+  <thead>
+    <tr>
+      <th>Team</th>
+      <th>Draft Pick</th>
+      <th>Category</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% users.each do |user| %>
+      <tr>
+        <td><%= link_to user.team_abbr_and_name, user_path(user) %></td>
+        <td><%= user.first_pick_of_round(round).try(:name).to_s %></td>
+        <td><%= user.first_pick_of_round(round).try(:category).try(:name).to_s %></td>
+      </tr>
+    <% end %>
+    <% 3.times do %>
+      <td></td>
+    <% end %>
+    <% users.reverse.each do |user| %>
+      <tr>
+        <td><%= link_to user.team_abbr_and_name, user_path(user) %></td>
+        <td><%= user.second_pick_of_round(round).try(:name).to_s %></td>
+        <td><%= user.second_pick_of_round(round).try(:category).try(:name).to_s %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

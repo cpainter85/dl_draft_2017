@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="page-header">
+    <div class="pull-right">
+      <% if current_user.is_semifinalist? %>
+        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#makeDraftPick">
+          Make Draft Pick
+        </button>
+      <% end %>
+    </div>
+    <h1>Semi-Finals Selection Schedule</h1>
+  </div>
+
+  <% semi_final_rounds.each do |round_num| %>
+    <%= render partial: 'playoffs_schedule', locals: {users: @users, round: round_num} %>
+  <% end %>
+</div>
+
+
+<!-- Modal -->
+<%= render 'draft_picks/new' %>

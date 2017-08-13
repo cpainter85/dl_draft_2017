@@ -4,6 +4,16 @@ class DraftController < ApplicationController
     @draft_pick ||= current_user.draft_picks.new(round_drafted: current_user.default_round)
   end
 
+  def semifinals
+    @users = User.semifinalists
+    @draft_pick ||= current_user.draft_picks.new(round_drafted: current_user.default_round)
+  end
+
+  def finals
+    @users = User.finalists
+    @draft_pick ||= current_user.draft_picks.new(round_drafted: current_user.default_round)
+  end
+
   private
 
   def draft_schedule

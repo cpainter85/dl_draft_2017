@@ -15,4 +15,7 @@ Rails.application.routes.draw do
   resources :rounds, only: [] do
     resources :matches, only: [:index, :new, :create]
   end
+
+  get 'semifinals', to: 'draft#semifinals'
+  get 'finals', to: 'draft#finals'
 end

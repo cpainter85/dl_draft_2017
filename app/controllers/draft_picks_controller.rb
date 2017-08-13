@@ -8,7 +8,13 @@ class DraftPicksController < ApplicationController
     @user = User.find(params[:user_id])
     @draft_pick = @user.draft_picks.new(draft_pick_params)
     if @draft_pick.save
-      redirect_to root_path, notice: "#{@draft_pick.name} has been added to your team!"
+      if semi_final_rounds.include?(@draft_pick.round_drafted)
+        redirect_to semifinals_path, notice: "#{@draft_pick.name} has been added to your team!"
+      elsif final_rounds.include?(@draft_pick.round_drafted)
+        redirect_to finals_path, notice: "#{@draft_pick.name} has been added to your team!"
+      else
+        redirect_to root_path, notice: "#{@draft_pick.name} has been added to your team!"
+      end
     else
       render :new
     end
